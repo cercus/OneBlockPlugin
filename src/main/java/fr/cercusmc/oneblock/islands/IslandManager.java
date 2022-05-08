@@ -51,7 +51,7 @@ public class IslandManager {
                 Arrays.asList(uuid.toString()), Collections.emptyList(), 0, 1, 0,
                 OneBlock.getFileConfig().getMinRadius(), Biome.PLAINS);
         //System.out.println("ok1");
-        //island.computeLevelOfIsland();
+        island.computeLevelOfIsland();
         //System.out.println("ok2");
 
         // Fire event when an island is created
@@ -85,10 +85,10 @@ public class IslandManager {
         Island is = getIslandOfPlayer(uuid);
         IslandDeleteEvent event = new IslandDeleteEvent(is);
         Bukkit.getPluginManager().callEvent(event);
-        //removeBlocks(is);
+        removeBlocks(is);
         this.islands.remove(is);
         OneBlock.getPlayerFile().removeIslandInFile(uuid);
-        //Bukkit.getPlayer(uuid).tele
+        Bukkit.getPlayer(uuid).teleport(OneBlock.getFileConfig().getSpawnLocation());
         return true;
     }
 
@@ -168,6 +168,9 @@ public class IslandManager {
         return false;
     }
 
+    public boolean playerIsOwner(Island is, UUID uuid) {
+        return is.getOwner().equals(uuid);
+    }
 
 
 

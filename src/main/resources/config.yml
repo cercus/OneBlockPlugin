@@ -1,3 +1,8 @@
 islands:
   max_radius: 250
   min_radius: 25
+spawn:
+  world: "world"
+  x: 0
+  y: 73
+  z: 0

@@ -19,6 +19,8 @@ public class MessageFile extends FileManager {
 
     public String getAlreadyIsland() { return messageConfig.getString("islands.player_has_island"); }
 
+    public String getPlayerNotInIslandOfPlayer() { return messageConfig.getString("islands.player_not_in_island_of_player"); }
+
     public String getNoPermission() {
         return messageConfig.getString("commands.no_permission");
     }
@@ -61,6 +63,11 @@ public class MessageFile extends FileManager {
 
     public String getSuccessScanningIsland() { return messageConfig.getString("commands.island.success_scanning_island"); }
 
+    public String getBanCommandDescription() { return messageConfig.getString("commands.moderation.ban_command_description"); }
+
+    public String getSuccessBan() {
+        return messageConfig.getString("commands.moderation.success_ban");
+    }
 
 
 }
