@@ -1,0 +1,7 @@
+name: OneBlock
+version: ${project.version}
+main: fr.cercusmc.oneblock.OneBlock
+api-version: 1.18
+authors: [CercusMC]
+commands:
+  oneblock:

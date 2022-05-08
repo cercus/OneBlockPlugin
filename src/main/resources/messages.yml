@@ -1,0 +1,21 @@
+islands:
+  no_island: "&cVous ne possédez pas d'île."
+  player_has_island: "&cVous possédez déja une île"
+commands:
+  no_permission: "&cVous n'avez pas la permission d'executer cette commande."
+  too_much_args: "&cIl y a trop d'arguments dans cette commande. Usage correcte : %syntax%"
+  too_less_args: "&cIl n'y a pas assez d'arguments dans cette commande. Usage correcte : %syntax%"
+  home:
+    sethome_command_description: "&eSet votre home."
+    success_sethome: "&eVotre home a bien été définit en &f%x% %y% %z%."
+    delhome_command_description: "&eSupprimer votre home (le centre de l'île devient le nouveua home)."
+    success_delhome: "&eVotre home a bien été supprimé."
+    home_command_description: "&eSe téléporter à votre home."
+    success_home: "&eVOus avez été téléporté à votre home."
+  island:
+    create_command_description: "&eCréer une nouvelle île."
+    wait_creating_island: "&eCréation de l'île en cours..."
+    success_create_island: "&eIle crée avec succès, téléportation..."
+    level_command_description: "&eCalculer le level de son île"
+    wait_scanning_island: "&eCalcul du niveau d'île en cours..."
+    success_scanning_island: "&eVotre niveau d'île : &f%level% &epoint(s)"
