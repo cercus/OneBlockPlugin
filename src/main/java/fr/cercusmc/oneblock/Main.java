@@ -1,4 +1,4 @@
-package main.java.fr.cercusmc.oneblock;
+package fr.cercusmc.oneblock;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
