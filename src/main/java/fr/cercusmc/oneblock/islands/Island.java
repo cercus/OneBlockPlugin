@@ -80,6 +80,18 @@ public class Island {
         return this.owner.equals(uuid) || this.members.contains(uuid.toString());
     }
 
+    public boolean addBanPlayerInIsland(UUID target) {
+        if(isBanned(target))
+            return false;
+        this.bans.add(target.toString());
+        OneBlock.getPlayerFile().updateIslandInFile(this);
+        return true;
+    }
+
+    public boolean isBanned(UUID uuid) {
+        return this.bans.contains(uuid.toString());
+    }
+
     /**
      * Calcule le niveau de l'île
      * @return Le niveau de l'île

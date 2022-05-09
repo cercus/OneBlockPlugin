@@ -2,6 +2,8 @@ islands:
   no_island: "&cVous ne possédez pas d'île."
   player_has_island: "&cVous possédez déja une île."
   player_not_in_island_of_player: "&cCe joueur ne fait pas partie de votre île."
+  player_not_owner: "&cVous n'êtes pas le propriétaire de l'île."
+  not_a_player: "&cJoueur inconnu"
 commands:
   no_permission: "&cVous n'avez pas la permission d'executer cette commande."
   too_much_args: "&cIl y a trop d'arguments dans cette commande. Usage correcte : %syntax%"
@@ -23,3 +25,4 @@ commands:
   moderation:
     ban_command_description: "&eBannir un joueur."
     success_ban: "&eLe joueur &f%target% &ea bien été ban."
+    already_ban: "&cCe joueur est déjà banni de votre île."

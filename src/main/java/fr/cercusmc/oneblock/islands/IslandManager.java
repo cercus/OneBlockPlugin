@@ -128,6 +128,7 @@ public class IslandManager {
         if(!is.getOwner().equals(uuid))
             return false;
         is.setHome(home);
+        this.islands.set(getPositionIslandInList(is), is);
         OneBlock.getPlayerFile().updateIslandInFile(is);
         return true;
     }
@@ -180,5 +181,20 @@ public class IslandManager {
 
     public List<Island> getIslands() {
         return islands;
+    }
+
+    /**
+     * Obtenir la position d'une île dans la liste des îles
+     * @param is : L'île a obtenir
+     * @return la position de l'île
+     */
+    public int getPositionIslandInList(Island is) {
+        int index = 0;
+        for(Island island : this.islands)
+            if(island == is)
+                return index;
+            else
+                index++;
+        return -1;
     }
 }

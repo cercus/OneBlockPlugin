@@ -31,13 +31,16 @@ public class SetHomeCommand implements SubCommand {
             if(!OneBlock.getIslandManager().playerHasIsland(p.getUniqueId()))
                 ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getNoIsland(), null, null);
             else {
-                OneBlock.getIslandManager().changeHomeIsland(p.getUniqueId(), p.getLocation());
-                List<String> locSave = new ArrayList<>();
-                locSave.add(Integer.toString(p.getLocation().getBlockX()));
-                locSave.add(Integer.toString(p.getLocation().getBlockY()));
-                locSave.add(Integer.toString(p.getLocation().getBlockZ()));
-
-                ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getSuccessSethome(), Arrays.asList("%x%", "%y%", "%z%"), locSave);
+                boolean checkChangeHome = OneBlock.getIslandManager().changeHomeIsland(p.getUniqueId(), p.getLocation());
+                if(checkChangeHome) {
+                    List<String> locSave = new ArrayList<>();
+                    locSave.add(Integer.toString(p.getLocation().getBlockX()));
+                    locSave.add(Integer.toString(p.getLocation().getBlockY()));
+                    locSave.add(Integer.toString(p.getLocation().getBlockZ()));
+                    ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getSuccessSethome(), Arrays.asList("%x%", "%y%", "%z%"), locSave);
+                } else {
+                    ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getPlayerNotOwner(), null, null);
+                }
             }
         } else {
             ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getTooMuchArgs(), Arrays.asList("%syntax%"), Arrays.asList(getSyntax()));

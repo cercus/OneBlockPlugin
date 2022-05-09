@@ -31,8 +31,11 @@ public class DelHomeCommand implements SubCommand {
                 ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getNoIsland(), null, null);
             else {
 
-                OneBlock.getIslandManager().changeHomeIsland(p.getUniqueId(), OneBlock.getIslandManager().getIslandOfPlayer(p.getUniqueId()).getCenterBlock());
-                ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getSuccessDelhome(), null, null);
+                boolean checkDelHome = OneBlock.getIslandManager().changeHomeIsland(p.getUniqueId(), OneBlock.getIslandManager().getIslandOfPlayer(p.getUniqueId()).getCenterBlock());
+                if(checkDelHome)
+                    ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getSuccessDelhome(), null, null);
+                else
+                    ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getPlayerNotOwner(), null, null);
             }
         } else {
             ToolsFunctions.sendMessage(p.getUniqueId(), OneBlock.getMessageFile().getTooMuchArgs(), Arrays.asList("%syntax%"), Arrays.asList(getSyntax()));

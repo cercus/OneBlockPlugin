@@ -21,6 +21,10 @@ public class MessageFile extends FileManager {
 
     public String getPlayerNotInIslandOfPlayer() { return messageConfig.getString("islands.player_not_in_island_of_player"); }
 
+    public String getPlayerNotOwner() { return messageConfig.getString("islands.player_not_owner"); }
+
+    public String getNotAPlayer() { return messageConfig.getString("islands.not_a_player"); }
+
     public String getNoPermission() {
         return messageConfig.getString("commands.no_permission");
     }
@@ -67,6 +71,10 @@ public class MessageFile extends FileManager {
 
     public String getSuccessBan() {
         return messageConfig.getString("commands.moderation.success_ban");
+    }
+
+    public String getAlreadyBan() {
+        return messageConfig.getString("commands.moderation.already_ban");
     }
 
 
