@@ -133,4 +133,16 @@ public class ToolsFunctions {
 
     }
 
+    /**
+     * Calcule la somme d'une liste d'entier
+     * @param list : Liste d'entier
+     * @return la somem de la liste
+     */
+    public static int somme(ArrayList<Integer> list) {
+        int somme = 0;
+        for(int i : list)
+            somme += i;
+        return somme;
+    }
+
 }

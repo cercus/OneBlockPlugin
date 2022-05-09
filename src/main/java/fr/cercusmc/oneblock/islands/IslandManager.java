@@ -48,10 +48,10 @@ public class IslandManager {
 
         Location locPlusY1 = loc.clone().add(0, 1, 0);
         Island island = new Island(uuid, locPlusY1, locPlusY1, locPlusY1, loc,
-                Arrays.asList(uuid.toString()), Collections.emptyList(), 0, 1, 0,
+                new ArrayList<String>(Arrays.asList(uuid.toString())), new ArrayList<String>(Collections.emptyList()), 0, 1, 0,
                 OneBlock.getFileConfig().getMinRadius(), Biome.PLAINS);
         //System.out.println("ok1");
-        island.computeLevelOfIsland();
+        //island.computeLevelOfIsland();
         //System.out.println("ok2");
 
         // Fire event when an island is created

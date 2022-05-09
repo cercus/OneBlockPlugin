@@ -1,11 +1,9 @@
 package fr.cercusmc.oneblock;
 
 import fr.cercusmc.oneblock.commands.OneBlockCommand;
-import fr.cercusmc.oneblock.files.ConfigFile;
-import fr.cercusmc.oneblock.files.LevelFile;
-import fr.cercusmc.oneblock.files.MessageFile;
-import fr.cercusmc.oneblock.files.PlayerFile;
+import fr.cercusmc.oneblock.files.*;
 import fr.cercusmc.oneblock.islands.IslandManager;
+import fr.cercusmc.oneblock.phases.Phase;
 import fr.cercusmc.oneblock.world.OneBlockGenerator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OneBlock extends JavaPlugin {
@@ -27,6 +26,9 @@ public class OneBlock extends JavaPlugin {
     private static IslandManager islandManager;
     private static ConfigFile fileConfig;
     private static MessageFile messageFile;
+    private static PhaseFile phaseFile;
+    private static ArrayList<Phase> phases;
+
 
     private static World overworld;
     private String ONEBLOCK_OVERWORLD = "OneBlock_Overworld";
@@ -52,6 +54,8 @@ public class OneBlock extends JavaPlugin {
         levelFile = new LevelFile();
         levels = levelFile.getAllLevelsBlocks();
         islandManager = new IslandManager();
+        phaseFile = new PhaseFile();
+        phases = phaseFile.getAllPhases();
 
         getCommand("oneblock").setExecutor(new OneBlockCommand());
 
@@ -110,5 +114,17 @@ public class OneBlock extends JavaPlugin {
 
     public static MessageFile getMessageFile() {
         return messageFile;
+    }
+
+    public static ArrayList<Phase> getPhases() {
+        return phases;
+    }
+
+    public static void setPhases(ArrayList<Phase> phases) {
+        OneBlock.phases = phases;
+    }
+
+    public static PhaseFile getPhaseFile() {
+        return phaseFile;
     }
 }

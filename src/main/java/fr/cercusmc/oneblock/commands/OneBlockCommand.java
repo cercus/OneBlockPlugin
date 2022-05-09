@@ -6,6 +6,7 @@ import fr.cercusmc.oneblock.commands.subcommands.players.home.HomeCommand;
 import fr.cercusmc.oneblock.commands.subcommands.players.home.SetHomeCommand;
 import fr.cercusmc.oneblock.commands.subcommands.players.island.CreateCommand;
 import fr.cercusmc.oneblock.commands.subcommands.players.island.LevelCommand;
+import fr.cercusmc.oneblock.commands.subcommands.players.moderation.BanCommand;
 import fr.cercusmc.oneblock.islands.IslandManager;
 import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.command.Command;
@@ -29,6 +30,7 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
         subCommands.add(new DelHomeCommand());
         subCommands.add(new CreateCommand());
         subCommands.add(new LevelCommand());
+        subCommands.add(new BanCommand());
     }
 
     @Override

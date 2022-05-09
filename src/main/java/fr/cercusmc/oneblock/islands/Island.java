@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,16 +16,16 @@ public class Island {
     private Location warp;
     private Location home;
     private Location centerBlock;
-    private List<String> members;
-    private List<String> bans;
+    private ArrayList<String> members;
+    private ArrayList<String> bans;
     private double level;
     private int phase;
     private int nbBlocks;
     private int radius;
     private Biome biome;
 
-    public Island(UUID owner, Location spawn, Location warp, Location home, Location centerBlock, List<String> members,
-                  List<String> bans, double level, int phase, int nbBlocks, int radius, Biome biome) {
+    public Island(UUID owner, Location spawn, Location warp, Location home, Location centerBlock, ArrayList<String> members,
+                  ArrayList<String> bans, double level, int phase, int nbBlocks, int radius, Biome biome) {
         this.owner = owner;
         this.spawn = spawn;
         this.warp = warp;
@@ -83,7 +84,7 @@ public class Island {
     public boolean addBanPlayerInIsland(UUID target) {
         if(isBanned(target))
             return false;
-        this.bans.add(target.toString());
+        bans.add(target.toString());
         OneBlock.getPlayerFile().updateIslandInFile(this);
         return true;
     }
@@ -133,13 +134,17 @@ public class Island {
         this.centerBlock = centerBlock;
     }
 
-    public void setMembers(List<String> members) {
+    public void setMembers(ArrayList<String> members) {
         this.members = members;
     }
 
-    public void setBans(List<String> bans) {
+    public void setBans(ArrayList<String> bans) {
         this.bans = bans;
     }
+
+    public void setMembers(List<String> members) { this.members = new ArrayList<>(members); }
+
+    public void setBans(List<String> bans) { this.bans = new ArrayList<>(bans); }
 
     public void setPhase(int phase) {
         this.phase = phase;
@@ -177,11 +182,11 @@ public class Island {
         return centerBlock;
     }
 
-    public List<String> getMembers() {
+    public ArrayList<String> getMembers() {
         return members;
     }
 
-    public List<String> getBans() {
+    public ArrayList<String> getBans() {
         return bans;
     }
 
