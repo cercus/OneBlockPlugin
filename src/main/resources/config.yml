@@ -6,3 +6,20 @@ spawn:
   x: 0
   y: 73
   z: 0
+random_block_chest:
+  nb_item_min_chest: 2
+  nb_item_max_chest: 8
+  quantity_min_for_one_item: 1
+  quantity_max_for_one_item: 7
+  item_single_in_chest:
+    - "HEART_OF_THE_SEA"
+    - "TRIDENT"
+    - "WITHER_SKELETON_SKULL"
+    - "NAME_TAG"
+    - "SADDLE"
+    - "IRON_HORSE_ARMOR"
+    - "DIAMOND_HORSE_ARMOR"
+    - "LEATHER_HORSE_ARMOR"
+    - "DRAGON_BREATH"
+    - "LAVA_BUCKET"
+    - "WATER_BUCKET"

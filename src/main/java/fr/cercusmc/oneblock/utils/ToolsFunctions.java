@@ -9,6 +9,7 @@ import org.bukkit.World;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,7 +49,7 @@ public class ToolsFunctions {
     }
 
     /**
-     * Convertir les & en couleur ainsi que les couleurs hexa
+     * Convertir les &amp; en couleur ainsi que les couleurs hexa
      * @param message Message a convertir
      * @param placeholders Liste des placeholders dans le message
      * @param values Liste des valeurs à remplacer
@@ -69,6 +70,46 @@ public class ToolsFunctions {
 
         return ChatColor.translateAlternateColorCodes('&', message);
     }
+
+    /**
+     * Convertir les &amp; en couleur ainsi que les couleurs hexa
+     * @param message Message a convertir
+     * @return le message formaté
+     */
+    public static String format(String message) {
+
+        Matcher match = pattern.matcher(message);
+        while(match.find()) {
+            String color = message.substring(match.start(), match.end());
+            message = message.replace(color, ChatColor.of(color) + "");
+            match = pattern.matcher(message);
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
+
+    /**
+     * Convertir les &amp; en couleur ainsi que les couleurs hexa
+     * @param messages ArrayList de message a convertir
+     * @return le message formaté
+     */
+    public static ArrayList<String> format(ArrayList<String> messages) {
+        ArrayList<String> res = new ArrayList<>();
+        for(String message : messages) {
+            String tmp = message;
+            Matcher match = pattern.matcher(message);
+            while (match.find()) {
+
+                String color = tmp.substring(match.start(), match.end());
+                tmp = tmp.replace(color, ChatColor.of(color) + "");
+                match = pattern.matcher(tmp);
+            }
+            res.add(ChatColor.translateAlternateColorCodes('&', tmp));
+        }
+
+        return res;
+    }
+
 
     /**
      * Envoyer un message a un joueur
@@ -143,6 +184,17 @@ public class ToolsFunctions {
         for(int i : list)
             somme += i;
         return somme;
+    }
+
+    /**
+     * Génère un nombre aléatoire entre a et b
+     * @param a : borne min
+     * @param b : borne max
+     * @return Un nombre aléatoire entre  a et b
+     */
+    public static int rand(int a, int b) {
+        Random rand = new Random();
+        return a+rand.nextInt(b-a);
     }
 
 }

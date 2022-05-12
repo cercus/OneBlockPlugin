@@ -1,17 +1,26 @@
 package fr.cercusmc.oneblock.phases;
 
 import fr.cercusmc.oneblock.OneBlock;
+import fr.cercusmc.oneblock.utils.ItemBuilder;
 import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.block.Chest;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PhaseManager {
 
@@ -50,8 +59,44 @@ public class PhaseManager {
      * @param phase : Phase du joueur
      * @param p : Joueur
      */
-    private void generateItems(Location loc, int phase, Player p) {
+    public void generateItems(Location loc, int phase, Player p) {
+        loc.getBlock().breakNaturally();
+        loc.getBlock().setType(Material.AIR);
+        loc.getBlock().setType(Material.CHEST);
+        Chest chest = (Chest) loc.getBlock().getState();
+        Inventory inv = chest.getInventory();
+        // Générer une liste de 0 a 27 inclue
+        ArrayList<Integer> slotsChest = new ArrayList<>(IntStream.iterate(0, n -> n+1).limit(inv.getSize()).boxed().collect(Collectors.toList()));
+        int nbMaxItem = ToolsFunctions.rand(OneBlock.getFileConfig().getNbItemMinChest(), OneBlock.getFileConfig().getNbItemMaxChest());
+        ArrayList<Material> items = getPhaseById(phase).getItems();
 
+        // On parcours le nombre d'item qu'on aura dans le coffre
+        for(int k = 0;  k < nbMaxItem; k++) {
+            int posInChest = ToolsFunctions.rand(0, slotsChest.size()); // Position aléatoire dans le coffre
+            // Amelioration possible : Poids de chaque item
+            Material randomMaterial = items.get(ToolsFunctions.rand(0, items.size())); // Item aléatoire
+
+            // Item rare
+            if(OneBlock.getFileConfig().getItemSingleInChest().contains(randomMaterial.name())) {
+                inv.setItem(posInChest, new ItemBuilder(randomMaterial, 1).build());
+
+            // Livres enchantés
+            } else if(randomMaterial.name().equals("ENCHANTED_BOOK")){
+                ArrayList<Enchantment> enchantments = new ArrayList<>(Arrays.asList(Enchantment.values()));
+                ItemStack it = new ItemBuilder(Material.ENCHANTED_BOOK, 1).build();
+                EnchantmentStorageMeta meta = (EnchantmentStorageMeta) it.getItemMeta();
+                Enchantment e = enchantments.get(ToolsFunctions.rand(0, enchantments.size()));
+                meta.addStoredEnchant(e, ToolsFunctions.rand(1, 5), true);
+                it.setItemMeta(meta);
+                inv.setItem(posInChest, it);
+                
+            // Item normal
+            } else {
+                int nombreItem = ToolsFunctions.rand(OneBlock.getFileConfig().getQuantityMinForOneItem(), OneBlock.getFileConfig().getQuantityMaxForOneItem());
+                inv.setItem(posInChest, new ItemBuilder(randomMaterial, nombreItem).build());
+            }
+            slotsChest.remove(posInChest);
+        }
     }
 
     /**
@@ -140,7 +185,7 @@ public class PhaseManager {
      * mots = ["arbre", "branche", "feuille", "racine", "sève", "écorce"]
      * probas = [16.6, 13.6, 12.6, 20.6, 29.6, 7]
      *
-     * Si r = 20, alors l'item selectionné sera "branche" car 0 < r < 16.6 n'est pas vérifié mais 16.6 < r < 16.6+13.6 = 30.2 l'est
+     * Si r = 20, alors l'item selectionné sera "branche" car 0 &lt; r &lt; 16.6 n'est pas vérifié mais 16.6 &lt; r &lt; 16.6+13.6 = 30.2 l'est
      *
      * @param probas : liste des probabilités de chaque materiel
      * @param mats : Liste des materiels
@@ -169,7 +214,7 @@ public class PhaseManager {
      * mots = ["arbre", "branche", "feuille", "racine", "sève", "écorce"]
      * probas = [16.6, 13.6, 12.6, 20.6, 29.6, 7]
      *
-     * Si r = 20, alors l'item selectionné sera "branche" car 0 < r < 16.6 n'est pas vérifié mais 16.6 < r < 16.6+13.6 = 30.2 l'est
+     * Si r = 20, alors l'item selectionné sera "branche" car 0 &lt; r &lt; 16.6 n'est pas vérifié mais 16.6 &lt; r &lt; 16.6+13.6 = 30.2 l'est
      *
      * @param probas : liste des probabilités de chaque entité
      * @param ents : Liste des entités
@@ -181,7 +226,7 @@ public class PhaseManager {
         EntityType ent = EntityType.PIG;
         for(int i = 0; i < probas.size(); i++) {
             double tmp = number + probas.get(i);
-            //System.out.println(number + "< " + r + " <= " + tmp);
+            //System.out.println(number + "&lt; " + r + " <= " + tmp);
             if(r > number && r <= tmp) {
                 ent = ents.get(i);
                 return ent;
