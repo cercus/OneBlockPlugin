@@ -35,7 +35,7 @@ public class PhaseFile extends FileManager {
             HashMap<Material, Integer> blocks = getAllBlockForOnePhase(section);
             HashMap<EntityType, Integer> entities = getAllEntityForOnePhase(section);
             ArrayList<Material> items = getAllItemsForOnePhase(section);
-            Phase phase = new Phase(Integer.parseInt(i), section.getString("name"), section.getString("description"), Material.valueOf(section.getString("icon")), section.getInt("block_to_reach"), blocks, entities, items);
+            Phase phase = new Phase(Integer.parseInt(i), ToolsFunctions.format(section.getString("name")), ToolsFunctions.format(section.getString("description")), Material.valueOf(section.getString("icon")), section.getInt("block_to_reach"), blocks, entities, items);
             phases.add(phase);
         }
         return phases;

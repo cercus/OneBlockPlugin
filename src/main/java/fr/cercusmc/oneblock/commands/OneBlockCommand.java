@@ -31,6 +31,7 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
         subCommands.add(new CreateCommand());
         subCommands.add(new LevelCommand());
         subCommands.add(new BanCommand());
+        subCommands.add(new OneBlockAdminCommand());
     }
 
     @Override
@@ -62,12 +63,16 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         List<String> subCmds = new ArrayList<>();
+        List<String> subCmdsAdmin = new ArrayList<>();
         ArrayList<String> list = new ArrayList<>();
         for(SubCommand s : subCommands)
             subCmds.add(s.getName());
+        for(SubCommand s : OneBlockAdminCommand.getSubCommands())
+            subCmdsAdmin.add(s.getName());
         if(args.length == 1) {
             list = StringUtil.copyPartialMatches(args[0], subCmds, list);
-        }
+        } else if(args[0].equalsIgnoreCase("admin") && args.length == 2)
+            list = StringUtil.copyPartialMatches(args[1], subCmdsAdmin, list);
         return list;
     }
 

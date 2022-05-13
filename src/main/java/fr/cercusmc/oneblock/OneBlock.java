@@ -4,6 +4,7 @@ import fr.cercusmc.oneblock.commands.OneBlockCommand;
 import fr.cercusmc.oneblock.files.*;
 import fr.cercusmc.oneblock.islands.IslandManager;
 import fr.cercusmc.oneblock.phases.Phase;
+import fr.cercusmc.oneblock.utils.Biome;
 import fr.cercusmc.oneblock.world.OneBlockGenerator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -28,6 +29,8 @@ public class OneBlock extends JavaPlugin {
     private static MessageFile messageFile;
     private static PhaseFile phaseFile;
     private static ArrayList<Phase> phases;
+    private static ArrayList<Biome> biomes;
+    private static BiomesFile biomeFile;
 
 
     private static World overworld;
@@ -56,6 +59,8 @@ public class OneBlock extends JavaPlugin {
         islandManager = new IslandManager();
         phaseFile = new PhaseFile();
         phases = phaseFile.getAllPhases();
+        biomeFile = new BiomesFile();
+        biomes = biomeFile.getAllBiomes();
 
         getCommand("oneblock").setExecutor(new OneBlockCommand());
 
@@ -126,5 +131,17 @@ public class OneBlock extends JavaPlugin {
 
     public static PhaseFile getPhaseFile() {
         return phaseFile;
+    }
+
+    public static ArrayList<Biome> getBiomes() {
+        return biomes;
+    }
+
+    public static BiomesFile getBiomeFile() {
+        return biomeFile;
+    }
+
+    public static void setBiomes(ArrayList<Biome> biomes) {
+        OneBlock.biomes = biomes;
     }
 }

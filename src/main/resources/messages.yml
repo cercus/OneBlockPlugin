@@ -26,3 +26,14 @@ commands:
     ban_command_description: "&eBannir un joueur."
     success_ban: "&eLe joueur &f%target% &ea bien été ban."
     already_ban: "&cCe joueur est déjà banni de votre île."
+  tools:
+    biome_command_description: "&eOuvre le menu des biomes disponibles."
+  administration:
+    admin_command_description: "&eAccès aux fonctions admin"
+    admin_reload_command_description: "&eRecharger tout les fichiers de configuration."
+    success_admin_reload_file: "&eLe fichier &f%file% &ea bien été rechargé."
+    fail_admin_reload_file: "&cUne erreur est survenue pendant le rechargement du fichier &f%file%&e."
+    success_reload_all_files: "&eTout les fichiers de configuration ont été rechargés."
+    fail_reload_all_files: "&cAu moins un fichier n'a pas pu être rechargé."
+inventory:
+  name_inventory_biome: "&eListe des biomes"

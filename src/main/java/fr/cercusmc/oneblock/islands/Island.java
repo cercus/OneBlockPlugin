@@ -89,6 +89,10 @@ public class Island {
         return true;
     }
 
+    public boolean isOwner(UUID uuid){
+        return uuid.equals(this.owner);
+    }
+
     public boolean isBanned(UUID uuid) {
         return this.bans.contains(uuid.toString());
     }

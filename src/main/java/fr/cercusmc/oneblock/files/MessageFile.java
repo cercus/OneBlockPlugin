@@ -77,5 +77,25 @@ public class MessageFile extends FileManager {
         return messageConfig.getString("commands.moderation.already_ban");
     }
 
+    public String getAdminCommandDescription() { return messageConfig.getString("commands.administration.admin_command_description"); }
+
+    public String getAdminReloadCommandDescription() { return messageConfig.getString("commands.administration.admin_reload_command_description"); }
+
+    public String getAdminSuccessReloadFile() { return messageConfig.getString("commands.administration.success_admin_reload_file"); }
+
+    public String getAdminFailReloadFile() { return messageConfig.getString("commands.administration.fail_admin_reload_file"); }
+
+    public String getSuccessReloadAllFiles() { return messageConfig.getString("commands.administration.success_reload_all_files"); }
+
+    public String getFailReloadAllFiles() { return messageConfig.getString("commands.administration.fail_reload_all_files"); }
+
+    public String getBiomeCommandDescription() { return messageConfig.getString("commands.tools.biome_command_description"); }
+
+    public String getNameInventoryBiome() { return messageConfig.getString("inventory.name_inventory_biome"); }
+
+
+
+
+
 
 }

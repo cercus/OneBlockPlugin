@@ -12,9 +12,6 @@ public class LevelFile extends FileManager  {
     private FileConfiguration levelConfig;
 
     public LevelFile() {
-
-
-
         super("levels.yml");
         levelConfig = super.getFileConfiguration();
     }
