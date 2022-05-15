@@ -29,7 +29,7 @@ biomes:
     description:
       - ""
       - "&eUne ambiance moins chaude"
-       ""
+      - ""
     permission: true
   WARM_OCEAN:
     name: "Océan chaud"

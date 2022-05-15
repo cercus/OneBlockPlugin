@@ -82,13 +82,13 @@ public class ItemBuilder {
     }
 
     public ItemBuilder addEnchant(Enchantment ench, int power) {
-        this.it.addUnsafeEnchantment(ench, power);
+        this.meta.addEnchant(ench, power, true);
         return this;
     }
 
     public ItemBuilder addEnchant(HashMap<Enchantment, Integer> enchantments) {
         this.enchantments = enchantments;
-        this.it.addUnsafeEnchantments(enchantments);
+        enchantments.forEach((k, v) -> this.meta.addEnchant(k, v, true));
         return this;
     }
 

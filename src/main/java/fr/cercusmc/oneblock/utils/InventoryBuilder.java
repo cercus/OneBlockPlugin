@@ -3,7 +3,6 @@ package fr.cercusmc.oneblock.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
@@ -18,12 +17,12 @@ public class InventoryBuilder {
         this.size = size;
         this.name = name;
         this.contents = contents;
-        this.inventory = Bukkit.createInventory(null, size, name);
+        this.inventory = Bukkit.createInventory(null, size, ToolsFunctions.format(name));
         setContents(contents);
     }
 
     public InventoryBuilder(int size, String name) {
-        this(size, name, null);
+        this(size, name, new HashMap<>());
     }
 
 

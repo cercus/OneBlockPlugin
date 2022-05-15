@@ -1,5 +1,6 @@
 package fr.cercusmc.oneblock.phases;
 
+import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 
@@ -10,14 +11,14 @@ public class Phase {
 
     private int id;
     private String name;
-    private String description;
+    private ArrayList<String> description;
     private Material icon;
     private int blockToReach;
     private HashMap<Material, Integer> blocks;
     private HashMap<EntityType, Integer> entities;
     private ArrayList<Material> items;
 
-    public Phase(int id, String name, String description, Material icon, int blockToReach, HashMap<Material, Integer> blocks, HashMap<EntityType, Integer> entities,ArrayList<Material> items){
+    public Phase(int id, String name, ArrayList<String> description, Material icon, int blockToReach, HashMap<Material, Integer> blocks, HashMap<EntityType, Integer> entities,ArrayList<Material> items){
         this.id = id;
         this.icon = icon;
         this.blockToReach = blockToReach;
@@ -37,18 +38,16 @@ public class Phase {
     }
 
     public String getName() {
-        return name;
+        return ToolsFunctions.format(name);
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public ArrayList<String> getDescription() { return ToolsFunctions.format(description); }
 
-    public void setDescription(String description) {
+    public void setDescription(ArrayList<String> description) {
         this.description = description;
     }
 

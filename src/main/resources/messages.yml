@@ -10,7 +10,7 @@ commands:
   too_less_args: "&cIl n'y a pas assez d'arguments dans cette commande. Usage correcte : %syntax%"
   home:
     sethome_command_description: "&eSet votre home."
-    success_sethome: "&eVotre home a bien été définit en &f%x% %y% %z%."
+    success_sethome: "&eVotre home a bien été définit en &fx=%x% y=%y% z=%z%."
     delhome_command_description: "&eSupprimer votre home (le centre de l'île devient le nouveua home)."
     success_delhome: "&eVotre home a bien été supprimé."
     home_command_description: "&eSe téléporter à votre home."
@@ -22,6 +22,7 @@ commands:
     level_command_description: "&eCalculer le level de son île"
     wait_scanning_island: "&eCalcul du niveau d'île en cours..."
     success_scanning_island: "&eVotre niveau d'île : &f%level% &epoint(s)"
+    phase_command_description: "&eVoir toutes les phases disponibles"
   moderation:
     ban_command_description: "&eBannir un joueur."
     success_ban: "&eLe joueur &f%target% &ea bien été ban."
@@ -37,3 +38,4 @@ commands:
     fail_reload_all_files: "&cAu moins un fichier n'a pas pu être rechargé."
 inventory:
   name_inventory_biome: "&eListe des biomes"
+  name_inventory_phases: "&eListe des phases"

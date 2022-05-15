@@ -59,13 +59,15 @@ public class MessageFile extends FileManager {
 
     public String getWaitingCreateIsland() { return messageConfig.getString("commands.island.wait_creating_island"); }
 
-    public String getSuccessCreateIsland() { return messageConfig.getString("commands.island.success_creating_island"); }
+    public String getSuccessCreateIsland() { return messageConfig.getString("commands.island.success_create_island"); }
 
     public String getLevelCommandDescription() { return messageConfig.getString("commands.island.level_command_description"); }
 
     public String getWaitingScanningIsland() { return messageConfig.getString("commands.island.wait_scanning_island"); }
 
     public String getSuccessScanningIsland() { return messageConfig.getString("commands.island.success_scanning_island"); }
+
+    public String getPhaseCommandDescription() { return messageConfig.getString("commands.island.phase_command_description"); }
 
     public String getBanCommandDescription() { return messageConfig.getString("commands.moderation.ban_command_description"); }
 
@@ -92,6 +94,8 @@ public class MessageFile extends FileManager {
     public String getBiomeCommandDescription() { return messageConfig.getString("commands.tools.biome_command_description"); }
 
     public String getNameInventoryBiome() { return messageConfig.getString("inventory.name_inventory_biome"); }
+
+    public String getNameInventoryPhase() { return messageConfig.getString("inventory.name_inventory_phases"); }
 
 
 

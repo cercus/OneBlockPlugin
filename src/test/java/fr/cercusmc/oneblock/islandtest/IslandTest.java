@@ -30,7 +30,7 @@ public class IslandTest {
         server = MockBukkit.mock();
 
         oneBlock = MockBukkit.load(OneBlock.class);
-        WorldCreator wc = oneBlock.makeOverworld();
+        //WorldCreator wc = oneBlock.makeOverworld();
         world = server.createWorld(oneBlock.makeOverworld());
         server.setPlayers(10);
     }
@@ -155,6 +155,7 @@ public class IslandTest {
             }
         }
         System.out.println(counts); // Valeurs proche des probabilités théoriques
+        Assertions.assertTrue(true);
 
     }
 

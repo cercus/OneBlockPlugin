@@ -1,10 +1,13 @@
 package fr.cercusmc.oneblock.utils;
 
 import fr.cercusmc.oneblock.OneBlock;
+import fr.cercusmc.oneblock.phases.PhaseManager;
+import fr.cercusmc.oneblock.utils.object.Position;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -56,15 +59,14 @@ public class ToolsFunctions {
      * @return le message formaté
      */
     public static String format(String message, @Nullable List<String> placeholders, @Nullable List<String> values) {
-        if(placeholders.size() != values.size())
-            return message;
         Matcher match = pattern.matcher(message);
         while(match.find()) {
             String color = message.substring(match.start(), match.end());
-            message = message.replace(color, ChatColor.of(color) + "");
+            String tmp = message.replace(color, ChatColor.of(color) + "");
+            message = tmp;
             match = pattern.matcher(message);
         }
-        if(placeholders != null && values != null)
+        if(placeholders != null && values != null && placeholders.size() == values.size())
             for(int index = 0; index < placeholders.size(); index++)
                 message = message.replaceAll(placeholders.get(index), values.get(index));
 
@@ -195,6 +197,49 @@ public class ToolsFunctions {
     public static int rand(int a, int b) {
         Random rand = new Random();
         return a+rand.nextInt(b-a);
+    }
+
+    /**
+     * Vérifie si un joueur est sur un bloc
+     * @param p : Joueur
+     * @param b : Bloc
+     * @return true si le joueur se trouve au dessus du bloc
+     */
+    public static boolean playerInBlock(Player p, Block b) {
+        Location center = getCenterOfBlock(b.getLocation());
+        Location playerLoc = p.getLocation();
+        double offsetXPlus = center.getX()+0.5;
+        double offsetXMoins = center.getX()-0.5;
+        double offsetZPlus = center.getZ()+0.5;
+        double offsetZMoins = center.getZ()-0.5;
+        return center.getBlockY() == playerLoc.getBlockY() &&  (playerLoc.getX() > offsetXMoins && playerLoc.getX() < offsetXPlus) && (playerLoc.getZ() > offsetZMoins && playerLoc.getZ() < offsetZPlus);
+    }
+
+    public static double computeProgress(UUID uuid, int phase, int nbBlocks) {
+        int newPhase = phase+1;
+        ArrayList<Integer> phaseIds = new ArrayList<>();
+        OneBlock.getPhases().forEach(k -> {
+            phaseIds.add(k.getId());
+        });
+        PhaseManager pManager = new PhaseManager();
+        if(newPhase <= max(phaseIds)) {
+            double difference = (pManager.getPhaseById(newPhase).getBlockToReach() - pManager.getPhaseById(phase).getBlockToReach());
+            return ((double)nbBlocks)/difference;
+        }
+        return -1;
+
+    }
+
+    public static int max(ArrayList<Integer> list){
+        if(list == null || list.size() == 0)
+            return -1;
+        int max = list.get(0);
+        for(int index = 1; index < list.size(); index++) {
+            if (list.get(index) > max)
+                max = list.get(index);
+        }
+        return max;
+
     }
 
 }

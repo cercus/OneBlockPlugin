@@ -2,7 +2,10 @@
   icon: "GRASS_BLOCK"
   name: "§aPlaines"
   blocs_to_reach: 0
-  description: "§aLe début de votre aventure, avec des blocs simple pour commencer"
+  description:
+    - ""
+    - "§aLe début de votre aventure, avec des blocs simple pour commencer"
+    - ""
   blocs:
     - "GRASS_BLOCK 50"
     - "GRAVEL 20"
@@ -35,7 +38,10 @@
   icon: "DEEPSLATE"
   name: "§8Souterrain"
   blocs_to_reach: 50
-  description: "§8Beaucoup de blocs, items et mobs issus de la version 1.17 de Minecraft !"
+  description:
+    - ""
+    - "§8Beaucoup de blocs, items et mobs issus de la version 1.17 de Minecraft !"
+    - ""
   blocs:
     - "ANDESITE 20"
     - "DIORITE 20"
@@ -83,7 +89,10 @@
   icon: "SNOW_BLOCK"
   name: "Neige"
   blocs_to_reach: 100
-  description: "Brr ! Qu'il fait froid..."
+  description:
+    - ""
+    - "Brr ! Qu'il fait froid..."
+    - ""
   blocs:
     - "DARK_OAK_LOG 30"
     - "GOLD_ORE 10"
@@ -113,7 +122,10 @@
   icon: "PRISMARINE"
   name: "§bOcéan"
   blocs_to_reach: 150
-  description: "Un monde aquatique sur votre île"
+  description:
+    - ""
+    - "Un monde aquatique sur votre île"
+    - ""
   blocs:
     - "BRAIN_CORAL_BLOCK 8"
     - "BUBBLE_CORAL_BLOCK 8"
@@ -166,7 +178,10 @@
 5:
   icon: "JUNGLE_LOG"
   name: "§3Jungle"
-  description: "Explorer les blocs/mobs de la jungle profonde, comme un aventurier"
+  description:
+    - ""
+    - "Explorer les blocs/mobs de la jungle profonde, comme un aventurier"
+    - ""
   blocs_to_reach: 200
   blocs:
     - "COBBLESTONE 40"
@@ -198,7 +213,10 @@
 6:
   icon: "RED_SAND"
   name: "§cDésert Rouge"
-  description: "J'espère que vous n'avez aps oublier de vous hydrater..."
+  description:
+    - ""
+    - "J'espère que vous n'avez aps oublier de vous hydrater..."
+    - ""
   blocs_to_reach: 300
   blocs:
     - "ACACIA_LOG 28"
@@ -234,7 +252,10 @@
 7:
   icon: "NETHERRACK"
   name: "§4Nether"
-  description: "Bienvenue en Enfer !"
+  description:
+    - ""
+    - "Bienvenue en Enfer !"
+    - ""
   blocs_to_reach: 350
   blocs:
     - "ANCIENT_DEBRIS 3"
@@ -287,7 +308,10 @@
 8:
   icon: "BEE_NEST"
   name: "§eIdylle"
-  description: "Un petit coin de paradis ?"
+  description:
+    - ""
+    - "Un petit coin de paradis ?"
+    - ""
   blocs_to_reach: 400
   blocs:
     - "BEE_NEST 5"
@@ -324,7 +348,10 @@
 9:
   icon: "CRAFTING_TABLE"
   name: "§6Village"
-  description: "Envie de faire du commerce ?"
+  description:
+    - ""
+    - "Envie de faire du commerce ?"
+    - ""
   blocs_to_reach: 450
   blocs:
     - "GRASS_BLOCK 50"
@@ -371,7 +398,10 @@
     - "ENCHANTED_BOOK"
 10:
   icon: "BONE_BLOCK"
-  name: "§8Désolation"
+  name:
+    - ""
+    - "§8Désolation"
+    - ""
   description: "Un monde dévasté par quoi ?"
   blocs_to_reach: 500
   blocs:
@@ -405,7 +435,10 @@
 11:
   icon: "END_STONE"
   name: "§5The End"
-  description: "§c§lEs-ce vraiment la fin ?"
+  description:
+    - ""
+    - "§c§lEs-ce vraiment la fin ?"
+    - ""
   blocs_to_reach: 550
   blocs:
     - "END_STONE 25"

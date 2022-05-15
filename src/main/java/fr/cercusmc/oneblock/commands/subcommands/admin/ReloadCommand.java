@@ -6,7 +6,6 @@ import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
-import java.util.concurrent.Callable;
 
 public class ReloadCommand implements SubCommand {
     @Override

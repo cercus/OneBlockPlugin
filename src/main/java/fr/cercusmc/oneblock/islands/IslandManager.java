@@ -4,11 +4,11 @@ import fr.cercusmc.oneblock.OneBlock;
 import fr.cercusmc.oneblock.api.events.IslandCreateEvent;
 import fr.cercusmc.oneblock.api.events.IslandDeleteEvent;
 import fr.cercusmc.oneblock.utils.*;
+import fr.cercusmc.oneblock.utils.object.Position;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
-import org.bukkit.entity.Entity;
 import org.bukkit.util.BoundingBox;
 
 import java.util.*;
@@ -42,7 +42,7 @@ public class IslandManager {
     public boolean createIsland(UUID uuid) {
         if(playerHasIsland(uuid))
             return false;
-        int nbIsland = this.islands.size();
+        //int nbIsland = this.islands.size();
         Position next = ToolsFunctions.findNext(OneBlock.getPlayerFile().getNbIslandTotal());
         Location loc = new Location(OneBlock.getOverworld(), next.getX(), next.getY(), next.getZ());
 
@@ -60,7 +60,15 @@ public class IslandManager {
         putBlocks(loc);
         this.islands.add(island);
         OneBlock.getPlayerFile().addIslandInFile(island);
+        OneBlock.getPlayerFile().getFileConfiguration().set("nbIsland", (OneBlock.getPlayerFile().getFileConfiguration().getInt("nbIsland")+1));
+        OneBlock.getPlayerFile().save();
         Bukkit.getPlayer(uuid).teleport(ToolsFunctions.getCenterOfBlock(locPlusY1));
+        BossBarBuilder build = new BossBarBuilder(OneBlock.getFileConfig().getTitleOfBar(),
+                OneBlock.getFileConfig().getStyleOfBar(),
+                OneBlock.getFileConfig().getColorOfBar(),
+                OneBlock.getFileConfig().getFlagOfBar(), 0.0);
+        build.addPlayer(uuid);
+        OneBlock.getBossbars().put(uuid, build);
         return true;
     }
 
@@ -69,7 +77,7 @@ public class IslandManager {
      * @param loc : Location du bloc d'herbe
      */
     private void putBlocks(Location loc) {
-        loc.getBlock().setType(Material.GRASS);
+        loc.getBlock().setType(Material.GRASS_BLOCK);
         //System.out.println(loc);
         loc.clone().add(0, -1, 0).getBlock().setType(Material.BEDROCK);
     }
@@ -196,5 +204,9 @@ public class IslandManager {
             else
                 index++;
         return -1;
+    }
+
+    public int getNbIslandTotal() {
+        return nbIslandTotal;
     }
 }

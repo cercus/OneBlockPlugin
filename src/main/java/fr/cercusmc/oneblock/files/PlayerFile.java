@@ -22,6 +22,7 @@ public class PlayerFile extends FileManager {
     public void addIslandInFile(Island island) {
         if(playerConfig.getConfigurationSection("players."+island.getOwner().toString()) != null)
             removeIslandInFile(island.getOwner());
+
         ConfigurationSection section = playerConfig.createSection("players."+island.getOwner().toString());
         section.set("spawn", island.getSpawn());
         section.set("home", island.getHome());
@@ -34,7 +35,6 @@ public class PlayerFile extends FileManager {
         section.set("nb_blocks", island.getNbBlocks());
         section.set("radius", island.getRadius());
         section.set("biome", island.getBiome().name());
-        playerConfig.set("nbIsland", (playerConfig.getInt("nbIsland")+1));
         super.save();
     }
 

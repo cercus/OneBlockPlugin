@@ -1,10 +1,12 @@
 package fr.cercusmc.oneblock;
 
 import fr.cercusmc.oneblock.commands.OneBlockCommand;
+import fr.cercusmc.oneblock.events.BreakListener;
 import fr.cercusmc.oneblock.files.*;
 import fr.cercusmc.oneblock.islands.IslandManager;
 import fr.cercusmc.oneblock.phases.Phase;
-import fr.cercusmc.oneblock.utils.Biome;
+import fr.cercusmc.oneblock.utils.BossBarBuilder;
+import fr.cercusmc.oneblock.utils.object.Biome;
 import fr.cercusmc.oneblock.world.OneBlockGenerator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -17,6 +19,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class OneBlock extends JavaPlugin {
 
@@ -31,6 +34,8 @@ public class OneBlock extends JavaPlugin {
     private static ArrayList<Phase> phases;
     private static ArrayList<Biome> biomes;
     private static BiomesFile biomeFile;
+
+    private static HashMap<UUID, BossBarBuilder> bossbars = new HashMap<>();
 
 
     private static World overworld;
@@ -48,6 +53,7 @@ public class OneBlock extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        Bukkit.getPluginManager().registerEvents(new BreakListener(), this);
         saveDefaultConfig();
 
         makeOverworld();
@@ -143,5 +149,9 @@ public class OneBlock extends JavaPlugin {
 
     public static void setBiomes(ArrayList<Biome> biomes) {
         OneBlock.biomes = biomes;
+    }
+
+    public static HashMap<UUID, BossBarBuilder> getBossbars() {
+        return bossbars;
     }
 }

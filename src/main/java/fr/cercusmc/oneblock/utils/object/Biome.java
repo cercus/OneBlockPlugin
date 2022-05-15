@@ -1,5 +1,6 @@
-package fr.cercusmc.oneblock.utils;
+package fr.cercusmc.oneblock.utils.object;
 
+import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -28,9 +29,7 @@ public class Biome {
         this.biome = biome;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return ToolsFunctions.format(name); }
 
     public void setName(String name) {
         this.name = name;
@@ -45,7 +44,7 @@ public class Biome {
     }
 
     public ArrayList<String> getDescription() {
-        return description;
+        return ToolsFunctions.format(description);
     }
 
     public void setDescription(ArrayList<String> description) {

@@ -5,7 +5,6 @@ import fr.cercusmc.oneblock.commands.SubCommand;
 import fr.cercusmc.oneblock.islands.Island;
 import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;

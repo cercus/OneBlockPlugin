@@ -30,9 +30,9 @@ public class PhaseManager {
         Random rand = new Random();
         int r = rand.nextInt(100); // Valeur comprise entre [0;100[
 
-        if(r < 70) { // Blocks
+        if(r < 90) { // Blocks
             generateBlock(loc, phase, p);
-        } else if(r < 90) { // Mobs
+        } else if(r < 97) { // Mobs
             generateMobs(loc, phase, p);
         } else { // Items
             generateItems(loc, phase, p);
@@ -109,7 +109,7 @@ public class PhaseManager {
         HashMap<EntityType, Integer> mobs = getPhaseById(phase).getEntities();
         loc.getWorld().spawnEntity(ToolsFunctions.getCenterOfBlock(loc.clone().add(0, 2, 0)), chooseRandomEntity(mobs));
         loc.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, loc.clone().add(0, 2, 0), 100);
-        loc.getWorld().playSound(loc, Sound.BLOCK_ANVIL_HIT, 1.0f, 1.0f);
+        loc.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1f, 1f);
         loc.getBlock().setType(Material.GRASS_BLOCK);
     }
 
@@ -122,7 +122,7 @@ public class PhaseManager {
     public void generateBlock(Location loc, int phase, Player p) {
         HashMap<Material, Integer> blocks = getPhaseById(phase).getBlocks();
         loc.getBlock().setType(chooseRandomMaterial(blocks));
-        loc.getWorld().spawnParticle(Particle.CRIT, loc, 50);
+        loc.getWorld().spawnParticle(Particle.CRIT, loc.clone().add(0, 1, 0), 50);
     }
 
     /**

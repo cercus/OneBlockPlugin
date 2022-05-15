@@ -113,7 +113,7 @@ public class Island {
                 }
             }
         }
-        this.level = Math.round(level*100)/100;
+        this.level = Math.round(level*100.0)/100.0;
         OneBlock.getPlayerFile().updateIslandInFile(this);
         return this.level;
     }

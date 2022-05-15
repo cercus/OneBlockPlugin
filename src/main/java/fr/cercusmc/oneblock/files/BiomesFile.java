@@ -1,6 +1,6 @@
 package fr.cercusmc.oneblock.files;
 
-import fr.cercusmc.oneblock.utils.Biome;
+import fr.cercusmc.oneblock.utils.object.Biome;
 import fr.cercusmc.oneblock.utils.ToolsFunctions;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;

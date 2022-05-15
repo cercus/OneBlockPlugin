@@ -1,4 +1,4 @@
-package fr.cercusmc.oneblock.utils;
+package fr.cercusmc.oneblock.utils.object;
 
 import org.bukkit.Location;
 import org.bukkit.World;

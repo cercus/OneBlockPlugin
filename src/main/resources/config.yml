@@ -23,3 +23,8 @@ random_block_chest:
     - "DRAGON_BREATH"
     - "LAVA_BUCKET"
     - "WATER_BUCKET"
+bossbar:
+  title: "&ePhase actuelle : %phase_name% &e>> %new_phase_name%"
+  color: "GREEN"
+  style: "SOLID"
+  flag: "NONE"
